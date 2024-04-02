@@ -1,0 +1,89 @@
+/* CONFIGURACIONES GENERALES 
+ * COLORES A USAR
+ * BARRA DE MENU QUE APARECERA EN TODOS LOS VIEWPORTS
+*/
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Titillium+Web:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,200;1,300;1,400;1,600;1,700&display=swap');
+/*@font-face {
+    font-family: "Titillium Web";
+    src: url(public/fonts/TitilliumWeb-Regular.ttf);
+}*/
+:root {
+    --color-dark: #343434;
+    --color-soft: #C8C8C8;
+    --color-blue-in: #007bff;
+    --color-blue-dark: #004888;
+    --color-success: #34C64D;
+    --color-danger: #DF3535;
+}
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: "Titillium Web", sans-serif;;
+}
+
+/* BARRA DE MENU */
+
+.menu-bar {
+    background-color: var(--color-blue-dark);
+    display: flex;
+    list-style: none;
+    justify-content: space-evenly;
+    align-items: center;
+    border-bottom: gray 1px solid;
+}
+
+.menu-bar li {
+    padding: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.menu-bar a {
+    text-decoration: none;
+    color: white;
+    font-size: 20px;
+}
+
+#menu-bar-img {
+    width: 190px;
+}
+
+#submenu p {
+    padding: 0 15px;
+}
+
+/*
+    MENU DESPLEGABLE
+*/
+
+.menu {
+    display: none;
+}
+
+.menu-visible {
+    right: 20%;
+    position: absolute;
+    display: flex;
+    list-style: none;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: column;
+    background-color: var(--color-dark);
+    width: 400px;
+}
+
+.menu-visible li {
+    padding: 10px;
+    color: var(--color-blue-in);
+}
+
+.menu-visible a {
+    text-decoration: none;
+    color: var(--color-blue-in);
+}
