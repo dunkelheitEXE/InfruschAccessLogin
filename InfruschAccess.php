@@ -1,12 +1,24 @@
 <?php
 include("src/includes/header.php");
-require("app.php");
+require("config/app.php");
 //session_start();
+
+
+/**
+ * 
+ * PENDIENTE A ACABAR
+ * 
+*/
+
+
+
 if(isset($_POST['submit'])) {
     $id=$connection->getId("infrusch_access", $_POST['user'], $_POST['token']);
     echo $id;
 }
 ?>
+
+
 <!-- FORMULARIO DE REGISTRO -->
 <form action="" method="post" class="form">
     <p class="form-title">Ingresar</p>
