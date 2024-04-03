@@ -11,13 +11,14 @@ require("config/app.php");
 */
 
 
-
 if(isset($_POST['submit'])) {
-    $id=$connection->getId("infrusch_access", $_POST['user'], $_POST['token']);
-    echo $id;
+    $login_success = $connection->getId("infrusch_access", $_POST['user'], $_POST['token']);
+    if (!$login_success) {
+        // Gestión de error, el usuario no se encuentra o la contraseña no coincide
+        echo "Error de inicio de sesión";
+    }
 }
 ?>
-
 
 <!-- FORMULARIO DE REGISTRO -->
 <form action="" method="post" class="form">
