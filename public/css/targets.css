@@ -1,0 +1,29 @@
+:root {
+    --color-dark: #343434;
+    --color-soft: #C8C8C8;
+    --color-blue-in: #007bff;
+    --color-blue-dark: #004888;
+    --color-success: #34C64D;
+    --color-danger: #DF3535;
+}
+
+.tg {
+    width: 65%;
+    margin: 25px auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    border-radius: 10px;
+    border: none;
+}
+
+.tg-success {
+    background-color: var(--color-success);
+    color: var(--color-dark);
+}
+
+.tg-danger {
+    background-color: var(--color-danger);
+    color: white;
+}
