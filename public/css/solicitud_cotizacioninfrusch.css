@@ -63,14 +63,32 @@
 }
 
 .logout-button:hover, .view-solicitudes-button:hover {
-    background-color: #bd2130;
+    background-color: #001e3f;
 }
 
 
 .view-solicitudes-button {
-    background-color: #294767; 
+    background-color: #055cb9; 
     position: fixed; 
     right: 30px; 
     bottom: 30px; 
     padding: 5px 10px; 
+}
+
+.back-button {
+    display: inline-block;
+    margin: 10px 0;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    cursor: pointer;
+    position: fixed;
+    right: 20px;
+    bottom: 20px;
+}
+
+.back-button:hover {
+    background-color: #0056b3;
 }

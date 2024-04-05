@@ -27,7 +27,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         }
 
         $_SESSION['mensaje'] = 'Solicitud de cotización enviada correctamente. ' . $mensajeCorreo;
-        header('Refresh: 5; url=menuinfrusch.php'); 
+        header('Refresh: 5; url=menuinfrusch.php');
         exit;
     } else {
         $_SESSION['mensaje'] = 'Error al enviar la solicitud.';
@@ -43,7 +43,8 @@ include("src/includes/header.php");
     <?php
     if (isset($_SESSION['mensaje'])) {
         echo '<p class="error">' . htmlspecialchars($_SESSION['mensaje']) . '</p>';
-       
+        // Limpia el mensaje después de mostrarlo
+        unset($_SESSION['mensaje']);
     }
     ?>
     <form id="form-solicitud-cotizacion" method="post">
@@ -59,6 +60,8 @@ include("src/includes/header.php");
         </div>
     </form>
     <a href="ver_solicitudes.php" class="view-solicitudes-button">Ver Solicitudes</a>
+    <a href="menuinfrusch.php" class="back-button">Regresar al Menú</a>
+
 </div>
 
 <div class="logout-container">
