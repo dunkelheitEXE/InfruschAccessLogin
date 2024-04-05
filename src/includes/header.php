@@ -6,12 +6,13 @@
     <link rel="stylesheet" href="public/css/style.css">
     <link rel="stylesheet" href="public/css/form.css">
     <link rel="stylesheet" href="public/css/targets.css">
+    <link rel="stylesheet" href="public/css/home.css">
     <title>Index</title>
 </head>
 <body>
     <!-- BARRA DE MENU -->
     <ol class="menu-bar">
-        <li><a href="#"><img id="menu-bar-img" src="public/img/infrusch_logo_azul.svg" alt="infrusch"></a></li>
+        <li><a href="index.php"><img id="menu-bar-img" src="public/img/infrusch_logo_azul.svg" alt="infrusch"></a></li>
         <li id="submenu">
             <p><a href="#" id="acceder">Acceder</a></p>
             <p><a href="">Contacto</a></p>

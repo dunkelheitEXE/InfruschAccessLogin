@@ -54,14 +54,31 @@ class Database {
 
             // VERIFICAMOS QUE SE HAYA EJECUTADO DE MANERA ADECUADA
             if($query->execute()) {
-                return "Usuario creado correctamente";
+                return "<div class='tg tg-success'>Usuario creado correctamente</div>";
             } else {
-                return "Algo ha salido mal";
+                return "<div class='tg tg-danger'>Algo ha salido mal</div>";
             }
         } catch (\Throwable $e) {
-            return "Error";
+            return "<div class='tg tg-danger'>Algo ha salido mal</div>";
         }
         
+    }
+
+    public function verificarExistencia($user) {
+        $state = true;
+        $sql = "SELECT * FROM infrusch_access";
+        $query=$this->connection->prepare($sql);
+        $query->execute();
+        while ($verificador = $query->fetch()){
+            if($user == $verificador['username']){
+                $state=false;
+                break;
+            } else {
+                continue;
+            }
+        }
+
+        return $state;
     }
 }
 

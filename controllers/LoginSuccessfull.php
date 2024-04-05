@@ -1,6 +1,6 @@
 <?php
 if(isset($_POST['submit'])) {
-    $id = $connection->getId('infrusch_access', $_POST['user'], $_POST['password']);
+    $id = $connection->getId('infrusch_access', $_POST['usuario'], $_POST['password']);
     if($id == "" or $id == null) {
         $message = "Error, usuario no existente";
     } else {

@@ -8,8 +8,6 @@ if(!isset($_SESSION['user-id'])) {
 
 //COMPONENTS
 include('src/includes/header.php');
-?>
-<a href="logout.php">logout</a>
-<?php
+include('src/includes/components/ComHome.php');
 include('src/includes/footer.php');
 ?>
