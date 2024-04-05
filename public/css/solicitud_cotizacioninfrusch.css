@@ -72,7 +72,16 @@
     position: fixed; 
     right: 30px; 
     bottom: 30px; 
-    padding: 5px 10px; 
+    padding: 10px 20px;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.view-solicitudes-button:hover {
+    background-color: #004085;
 }
 
 .back-button {
@@ -85,7 +94,7 @@
     border-radius: 5px;
     cursor: pointer;
     position: fixed;
-    right: 20px;
+    left: 20px;
     bottom: 20px;
 }
 

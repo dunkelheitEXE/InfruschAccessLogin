@@ -60,6 +60,7 @@ include("src/includes/header.php");
         </div>
     </form>
     <a href="ver_solicitudes.php" class="view-solicitudes-button">Ver Solicitudes</a>
+    
     <a href="menuinfrusch.php" class="back-button">Regresar al Menú</a>
 
 </div>

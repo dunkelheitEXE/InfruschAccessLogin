@@ -38,7 +38,7 @@ include("src/includes/header.php");
     <input type="submit" value="Buscar">
 </form>
 
-<!-- Botón para regresar a la página de cotizaciones -->
+
 <a href="solicitud_cotizacioninfrusch.php" class="back-button">Regresar a Cotizaciones</a>
 
 <table>
