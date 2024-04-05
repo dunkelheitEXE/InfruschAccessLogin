@@ -6,6 +6,6 @@ if(!isset($_SESSION['user-id'])) {
 }
 
 include("src/includes/header.php");
-include("src/includes/components/ComHome.php");
+
 include("src/includes/footer.php");
 ?>

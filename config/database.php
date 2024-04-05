@@ -42,7 +42,7 @@ class Database {
         }
     }
 
-    public function insertUser($username, $password) {
+    public function insertUserAdmin($username, $password) {
         // PREPARAMOS LA CONSULTA PARA INGRESAR DATOS A LA TABLA DE USUARIOS ADMINISTRADORES
         $sql = "INSERT INTO infrusch_access(username, token) VALUES(:username, :pass)";
         try {
@@ -64,9 +64,9 @@ class Database {
         
     }
 
-    public function verificarExistencia($user) {
+    public function verificarExistencia($user, $table) {
         $state = true;
-        $sql = "SELECT * FROM infrusch_access";
+        $sql = "SELECT * FROM $table";
         $query=$this->connection->prepare($sql);
         $query->execute();
         while ($verificador = $query->fetch()){
@@ -79,6 +79,22 @@ class Database {
         }
 
         return $state;
+    }
+
+    public function insertCliente($constancia, $nombre, $direccion, $telefono, $email) {
+        $sql = "INSERT INTO infrusch_clients(cliente_constancia, cliente_nombre, cliente_direccion, cliente_telefono, cliente_email) VALUES(:constancia, :nombre, :direccion, :telefono, :email)";
+        $query = $this->connection->prepare($sql);
+        $query->bindParam(':constancia', $constancia);
+        $query->bindParam(':nombre', $nombre);
+        $query->bindParam(':direccion', $direccion);
+        $query->bindParam(':telefono', $telefono);
+        $query->bindParam(':email', $email);
+
+        if($query->execute()) {
+            return "<div class='tg tg-success'>Cliente registrado correctamente</div>";
+        } else {
+            return "<div class='tg tg-danger'>Algo ha salido mal</div>";
+        }
     }
 }
 

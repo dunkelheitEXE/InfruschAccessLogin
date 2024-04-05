@@ -42,3 +42,10 @@
     color: var(--color-blue-dark);
     padding: 15px;
 }
+
+.form-subtitle {
+    width: 100%;
+    font-size: 15px;
+    color: var(--color-blue-dark);
+    padding: 10px;
+}

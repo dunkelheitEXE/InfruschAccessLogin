@@ -22,5 +22,5 @@
     <!-- MENU DESPLEGABLE -->
     <ol class="menu" id="menu">
         <li><a href="InfruschAccess.php">infrusch</a></li>
-        <li>Usuario</li>
+        <li><a href="ClienteAccess.php">Cliente</a></li>
     </ol>
