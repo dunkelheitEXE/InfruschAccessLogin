@@ -1,6 +1,9 @@
 <div id="menu-container">
     <h1>ACCESO INFRUSCH</h1>
-    <div class="menu-item"><a href="datos_clienteinfrusch.php">DATOS CLIENTE</a></div>
+    <div class="menu-row">
+        <div class="menu-item"><a href="DatosCliente.php">DATOS CLIENTE</a></div>
+        <div class="menu-item"><a href="RegistroCliente.php">REGISTRO DE CLIENTES</a></div>
+    </div>
     <div class="menu-row">
         <div class="menu-item"><a href="alta_serviciosinfrusch.php">ALTA DE SERVICIOS</a></div>
         <div class="menu-item"><a href="servicios_pendientesinfrusch.php">SERVICIOS PENDIENTES</a></div>

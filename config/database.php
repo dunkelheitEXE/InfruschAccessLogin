@@ -96,6 +96,17 @@ class Database {
             return "<div class='tg tg-danger'>Algo ha salido mal</div>";
         }
     }
+
+    public function buscarClientes($search = '') {
+        if ($search) {
+            $stmt = $this->connection->prepare("SELECT * FROM infrusch_clients WHERE cliente_constancia LIKE :search OR cliente_nombre LIKE :search OR cliente_direccion LIKE :search OR cliente_telefono LIKE :search OR cliente_email LIKE :search");
+            $stmt->execute(['search' => '%' . $search . '%']);
+        } else {
+            $stmt = $this->connection->query("SELECT * FROM infrusch_clients");
+        }
+        
+        return $stmt ? $stmt->fetchAll(PDO::FETCH_ASSOC) : [];
+    }
 }
 
 ?>
