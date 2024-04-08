@@ -4,6 +4,6 @@ Business Project
 
 ## AVANCE DEL PROYECTO
 
-[*] Login para acceso de administrador infrusch
-[*] Pagina Home
-[*] Menu de clientes (en proceso)
+[x] Login para acceso de administrador infrusch
+[x] Pagina Home
+[ ] Menu de clientes (en proceso)
