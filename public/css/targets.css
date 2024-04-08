@@ -18,6 +18,11 @@
     border: none;
 }
 
+.tg-common {
+    background-color: var(--color-dark);
+    color: white;
+}
+
 .tg-success {
     background-color: var(--color-success);
     color: var(--color-dark);

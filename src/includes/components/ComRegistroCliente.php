@@ -6,13 +6,6 @@
     <input type="text" name="direccion" class="form-control" placeholder="direccion" required>
     <input type="text" name="telefono" class="form-control" placeholder="telefono" required>
     <input type="email" name="email" class="form-control" placeholder="email" required>
+    <input type="password" name="password" class="form-control" placeholder="Token" required>
     <input type="submit" name="submit" value="Registrar" class="form-btn">
 </form>
-
-<style>
-    .form-subtitle {
-        width: 70%;
-        font-size: 15px;
-        color: var(--color-blue-dark);
-    }
-</style>

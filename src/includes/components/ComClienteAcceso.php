@@ -1,1 +1,3 @@
-<form action="" method="post"></form>
+<form action="" method="post" class="form">
+    
+</form>

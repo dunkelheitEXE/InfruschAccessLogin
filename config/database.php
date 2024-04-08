@@ -81,14 +81,16 @@ class Database {
         return $state;
     }
 
-    public function insertCliente($constancia, $nombre, $direccion, $telefono, $email) {
-        $sql = "INSERT INTO infrusch_clients(cliente_constancia, cliente_nombre, cliente_direccion, cliente_telefono, cliente_email) VALUES(:constancia, :nombre, :direccion, :telefono, :email)";
+    public function insertCliente($constancia, $nombre, $direccion, $telefono, $email, $password) {
+        $sql = "INSERT INTO infrusch_clients(cliente_constancia, cliente_nombre, cliente_direccion, cliente_telefono, cliente_email, cliente_password) VALUES(:constancia, :nombre, :direccion, :telefono, :email, :pass)";
         $query = $this->connection->prepare($sql);
         $query->bindParam(':constancia', $constancia);
         $query->bindParam(':nombre', $nombre);
         $query->bindParam(':direccion', $direccion);
         $query->bindParam(':telefono', $telefono);
         $query->bindParam(':email', $email);
+        $hashedPassword = password_hash($password, PASSWORD_BCRYPT);
+        $query->bindParam(':pass', $hashedPassword);
 
         if($query->execute()) {
             return "<div class='tg tg-success'>Cliente registrado correctamente</div>";
@@ -99,13 +101,65 @@ class Database {
 
     public function buscarClientes($search = '') {
         if ($search) {
-            $stmt = $this->connection->prepare("SELECT * FROM infrusch_clients WHERE cliente_constancia LIKE :search OR cliente_nombre LIKE :search OR cliente_direccion LIKE :search OR cliente_telefono LIKE :search OR cliente_email LIKE :search");
+            $stmt = $this->connection->prepare("SELECT cliente_id, cliente_constancia, cliente_nombre, cliente_direccion, cliente_telefono, cliente_email FROM infrusch_clients WHERE cliente_constancia LIKE :search OR cliente_nombre LIKE :search OR cliente_direccion LIKE :search OR cliente_telefono LIKE :search OR cliente_email LIKE :search");
             $stmt->execute(['search' => '%' . $search . '%']);
         } else {
-            $stmt = $this->connection->query("SELECT * FROM infrusch_clients");
+            $stmt = $this->connection->query("SELECT cliente_id, cliente_constancia, cliente_nombre, cliente_direccion, cliente_telefono, cliente_email FROM infrusch_clients");
         }
         
         return $stmt ? $stmt->fetchAll(PDO::FETCH_ASSOC) : [];
+    }
+
+    public function getClienteData($id) {
+        try{
+            $results = [];
+            $sql = "SELECT cliente_id, cliente_constancia, cliente_nombre, cliente_direccion, cliente_telefono, cliente_email FROM infrusch_clients WHERE cliente_id = :id";
+            $query=$this->connection->prepare($sql);
+            $query->bindParam(':id', $id);
+            $query->execute();
+            $results = $query->fetch(PDO::FETCH_ASSOC);
+            if(count($results) > 0) {
+                return $results;
+            } else {
+                return null;
+            }
+        } catch (\Throwable $e) {
+            echo $e;
+        }
+    }
+
+    public function editCliente($nombre, $direccion, $telefono, $email, $id) {
+        try{
+            $sql = "UPDATE infrusch_clients SET cliente_nombre=:nombre, cliente_direccion=:direccion, cliente_telefono = :telefono, cliente_email = :email WHERE cliente_id=:id";
+            $query = $this->connection->prepare($sql);
+            $query->bindParam(':nombre', $nombre);
+            $query->bindParam(':direccion', $direccion);
+            $query->bindParam(':telefono', $telefono);
+            $query->bindParam(':email', $email);
+            $query->bindParam(':id', $id);
+            if($query->execute()) {
+                return "<div class='tg tg-success'>Cliente registrado correctamente</div>";
+            } else {
+                return "<div class='tg tg-danger'>Error</div>";
+            }
+        }catch(\Throwable $e) {
+            return $e;
+        }
+    }
+
+    public function deleteCliente($id) {
+        try{
+            $sql = "DELETE FROM infrusch_clients WHERE cliente_id = :id";
+            $query = $this->connection->prepare($sql);
+            $query->bindParam(':id', $id);
+            if($query->execute()) {
+                return "<div class='tg tg-success'>Cliente eliminado correctamente</div>";
+            } else {
+                return "<div class='tg tg-danger'>Error</div>";
+            }
+        } catch(\Throwable $e) {
+            return $e;
+        }
     }
 }
 
