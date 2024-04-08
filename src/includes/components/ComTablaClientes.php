@@ -1,6 +1,13 @@
 <link rel="stylesheet" href="public/css/TablaClientes.css">
 <h2>Listado de Clientes</h2>
 <form method="get" action="DatosCliente.php">
+    <select name="search_type">
+        <option value="id" <?php echo $searchType === 'id' ? 'selected' : ''; ?>>ID</option>
+        <option value="nombre" <?php echo $searchType === 'nombre' ? 'selected' : ''; ?>>Nombre</option>
+        <option value="email" <?php echo $searchType === 'email' ? 'selected' : ''; ?>>Email</option>
+        <option value="direccion" <?php echo $searchType === 'direccion' ? 'selected' : ''; ?>>Dirección</option>
+        <option value="telefono" <?php echo $searchType === 'telefono' ? 'selected' : ''; ?>>Teléfono</option>
+    </select>
     <input type="text" name="search" placeholder="Buscar clientes">
     <input type="submit" value="Buscar">
 </form>

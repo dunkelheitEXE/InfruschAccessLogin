@@ -99,15 +99,20 @@ class Database {
         }
     }
 
-    public function buscarClientes($search = '') {
-        if ($search) {
-            $stmt = $this->connection->prepare("SELECT cliente_id, cliente_constancia, cliente_nombre, cliente_direccion, cliente_telefono, cliente_email FROM infrusch_clients WHERE cliente_constancia LIKE :search OR cliente_nombre LIKE :search OR cliente_direccion LIKE :search OR cliente_telefono LIKE :search OR cliente_email LIKE :search");
-            $stmt->execute(['search' => '%' . $search . '%']);
-        } else {
-            $stmt = $this->connection->query("SELECT cliente_id, cliente_constancia, cliente_nombre, cliente_direccion, cliente_telefono, cliente_email FROM infrusch_clients");
+    public function buscarClientes($search = '', $searchType = "nombre") {
+        try{
+            if (!empty($search)) {
+                $sql = "SELECT cliente_id, cliente_constancia, cliente_nombre, cliente_direccion, cliente_telefono, cliente_email FROM infrusch_clients WHERE $searchType LIKE :searchType";
+                $stmt = $this->connection->prepare($sql);
+                $stmt->execute(['search' => "%$search%"]);
+            } else {
+                $stmt = $this->connection->query("SELECT cliente_id, cliente_constancia, cliente_nombre, cliente_direccion, cliente_telefono, cliente_email FROM infrusch_clients");
+            }
+            
+            return $stmt ? $stmt->fetchAll(PDO::FETCH_ASSOC) : [];
+        }catch(\Throwable $e){
+            echo $e->getMessage();
         }
-        
-        return $stmt ? $stmt->fetchAll(PDO::FETCH_ASSOC) : [];
     }
 
     public function getClienteData($id) {
