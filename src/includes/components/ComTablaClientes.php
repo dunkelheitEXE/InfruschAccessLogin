@@ -2,11 +2,11 @@
 <h2>Listado de Clientes</h2>
 <form method="get" action="DatosCliente.php">
     <select name="search_type">
-        <option value="id" <?php echo $searchType === 'id' ? 'selected' : ''; ?>>ID</option>
-        <option value="nombre" <?php echo $searchType === 'nombre' ? 'selected' : ''; ?>>Nombre</option>
-        <option value="email" <?php echo $searchType === 'email' ? 'selected' : ''; ?>>Email</option>
-        <option value="direccion" <?php echo $searchType === 'direccion' ? 'selected' : ''; ?>>Dirección</option>
-        <option value="telefono" <?php echo $searchType === 'telefono' ? 'selected' : ''; ?>>Teléfono</option>
+        <option value="cliente_id" <?php echo $searchType === 'cliente_id' ? 'selected' : ''; ?>>ID</option>
+        <option value="cliente_nombre" <?php echo $searchType === 'cliente_nombre' ? 'selected' : ''; ?>>Nombre</option>
+        <option value="cliente_email" <?php echo $searchType === 'cliente_email' ? 'selected' : ''; ?>>Email</option>
+        <option value="cliente_direccion" <?php echo $searchType === 'cliente_direccion' ? 'selected' : ''; ?>>Dirección</option>
+        <option value="cliente_telefono" <?php echo $searchType === 'cliente_telefono' ? 'selected' : ''; ?>>Teléfono</option>
     </select>
     <input type="text" name="search" placeholder="Buscar clientes">
     <input type="submit" value="Buscar">
@@ -35,7 +35,7 @@
         <th><?= $cliente['cliente_telefono']?></th>
         <th><?= $cliente['cliente_email']?></th>
         <th><a href="EditarCliente.php?clienteid=<?=$cliente['cliente_id']?>" class="edit-btn">Editar</a></th>
-        <th><a href="EliminarCliente.php?clienteid=<?=$cliente['cliente_id']?>" class="delete-btn">Eliminar</a></th>
+        <th><button onclick="openPop('EliminarCliente.php?clienteid=<?=$cliente['cliente_id']?>')" class="delete-btn">Eliminar</button></th>
     </tr>
     <?php endforeach; ?>
 </table>

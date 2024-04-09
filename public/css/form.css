@@ -8,7 +8,7 @@
     margin: 15px auto;
     border-radius: 15px;
     border: none;
-    background-color: var(--color-soft);
+    background: linear-gradient(-45deg, rgb(65, 65, 153), rgb(77, 77, 190), rgb(141, 141, 179) );
 }
 
 .form-control {
@@ -34,19 +34,20 @@
     outline: none;
     margin: 15px 0;
     background: var(--color-success);
-    color: var(--color-soft);
+    color: white;
 }
 
 .form-title {
     font-size: 30px;
-    color: var(--color-blue-dark);
+    color: var(--color-blue-soft);
     padding: 15px;
+    font-weight: 700;
 }
 
 .form-subtitle {
-    width: 100%;
+    width: 80%;
     font-size: 15px;
-    color: var(--color-blue-dark);
+    color: var(--color-blue-soft);
     padding: 10px;
     text-decoration: none;
 }

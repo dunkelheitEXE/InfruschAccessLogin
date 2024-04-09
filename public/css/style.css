@@ -2,23 +2,21 @@
  * COLORES A USAR
  * BARRA DE MENU QUE APARECERA EN TODOS LOS VIEWPORTS
  * LOGOUT BUTTON
+ * BOTONES ESTILOS (BUTTON STYLE)
 */
 
-@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Titillium+Web:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,200;1,300;1,400;1,600;1,700&display=swap');
-/*@font-face {
-    font-family: "Titillium Web";
-    src: url(public/fonts/TitilliumWeb-Regular.ttf);
-}*/
+
 :root {
     --color-dark: #343434;
     --color-soft: #C8C8C8;
+    --color-blue-soft: rgb(204, 219, 226);
     --color-blue-in: #007bff;
     --color-blue-dark: #004888;
     --color-success: #34C64D;
     --color-danger: #DF3535;
     --color-orange: #EA7A16;
+    --color-success-soft: #329553;
 }
 
 * {
@@ -134,4 +132,56 @@
 
 .back-button:hover {
     background-color: #0056b3;
+}
+
+/* POP-UP */
+
+.modal-container {
+    display: none;
+}
+
+.modal-container-visible {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: auto;
+    width: 100%;
+    height: 100vh;
+}
+
+.modal {
+    text-align: center;
+    background-color: white;
+    border-radius: 25px;
+    border: none;
+    box-shadow: 10px 10px 15px 0px;
+    width: 600px;
+    max-width: 100%;
+    padding: 25px;
+}
+
+.modal p {
+    padding: 25px;
+}
+
+#modal-btn {
+    cursor: pointer;
+    background-color: var(--color-success-soft);
+    border-radius: 5px;
+    border: none;
+    color: white;
+    padding: 15px;
+    text-decoration: none;
+}
+
+.confirm-btn {
+    cursor: pointer;
+    background-color: var(--color-success-soft);
+    border-radius: 5px;
+    border: none;
+    color: white;
+    padding: 15px;
+    text-decoration: none;
 }

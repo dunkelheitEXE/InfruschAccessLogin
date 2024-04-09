@@ -99,10 +99,10 @@ class Database {
         }
     }
 
-    public function buscarClientes($search = '', $searchType = "nombre") {
+    public function buscarClientes($search = '', $searchType = "cliente_nombre") {
         try{
             if (!empty($search)) {
-                $sql = "SELECT cliente_id, cliente_constancia, cliente_nombre, cliente_direccion, cliente_telefono, cliente_email FROM infrusch_clients WHERE $searchType LIKE :searchType";
+                $sql = "SELECT cliente_id, cliente_constancia, cliente_nombre, cliente_direccion, cliente_telefono, cliente_email FROM infrusch_clients WHERE $searchType LIKE :search";
                 $stmt = $this->connection->prepare($sql);
                 $stmt->execute(['search' => "%$search%"]);
             } else {
