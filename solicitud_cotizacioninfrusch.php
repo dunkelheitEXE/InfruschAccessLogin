@@ -43,7 +43,7 @@ include("src/includes/header.php");
     <?php
     if (isset($_SESSION['mensaje'])) {
         echo '<p class="error">' . htmlspecialchars($_SESSION['mensaje']) . '</p>';
-        // Limpia el mensaje después de mostrarlo
+
         unset($_SESSION['mensaje']);
     }
     ?>

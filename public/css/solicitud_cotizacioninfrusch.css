@@ -84,6 +84,28 @@
     background-color: #004085;
 }
 
+.logout-container {
+    flex-basis: 100%;
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.logout-button {
+    background-color: #dc3545;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    text-decoration: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.logout-button:hover {
+    background-color: #bd2130;
+}
+
 .back-button {
     display: inline-block;
     margin: 10px 0;
@@ -93,9 +115,6 @@
     text-decoration: none;
     border-radius: 5px;
     cursor: pointer;
-    position: fixed;
-    left: 20px;
-    bottom: 20px;
 }
 
 .back-button:hover {
