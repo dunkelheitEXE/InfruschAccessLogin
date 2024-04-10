@@ -34,8 +34,8 @@
         <th><?= $cliente['cliente_direccion']?></th>
         <th><?= $cliente['cliente_telefono']?></th>
         <th><?= $cliente['cliente_email']?></th>
-        <th><a href="EditarCliente.php?clienteid=<?=$cliente['cliente_id']?>" class="edit-btn">Editar</a></th>
-        <th><button onclick="openPop('EliminarCliente.php?clienteid=<?=$cliente['cliente_id']?>')" class="delete-btn">Eliminar</button></th>
+        <th><a href="EditarCliente.php?clienteid=<?=$cliente['cliente_id']?>" class="edit-btn"><img src="public/img/editBtn.svg" alt=""></a></th>
+        <th><button onclick="openPop('EliminarCliente.php?clienteid=<?=$cliente['cliente_id']?>')" class="delete-btn"><img src="public/img/deleteBtn.svg" alt=""></button></th>
     </tr>
     <?php endforeach; ?>
 </table>

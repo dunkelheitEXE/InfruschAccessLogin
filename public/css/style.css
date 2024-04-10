@@ -10,7 +10,7 @@
 :root {
     --color-dark: #343434;
     --color-soft: #C8C8C8;
-    --color-blue-soft: rgb(204, 219, 226);
+    --color-blue-soft: #CCDBE2;
     --color-blue-in: #007bff;
     --color-blue-dark: #004888;
     --color-success: #34C64D;
@@ -105,6 +105,11 @@
     text-decoration: none;
 }
 
+
+.edit-btn:hover {
+    background-color: #bb6519;
+}
+
 .delete-btn {
     padding: 10px;
     border-radius: 5px;
@@ -153,7 +158,7 @@
 
 .modal {
     text-align: center;
-    background-color: white;
+    background: linear-gradient(-45deg, rgb(65, 65, 153), rgb(77, 77, 190), rgb(141, 141, 179) );;
     border-radius: 25px;
     border: none;
     box-shadow: 10px 10px 15px 0px;
@@ -164,6 +169,7 @@
 
 .modal p {
     padding: 25px;
+    color: var(--color-blue-soft);
 }
 
 #modal-btn {
