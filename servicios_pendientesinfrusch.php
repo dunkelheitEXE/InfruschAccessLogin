@@ -8,36 +8,7 @@ if (!isset($_SESSION['user_id'])) {
 }
 
 $database = new databaseservi();
-$mensaje = '';
-
-if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    $cliente = $_POST['cliente'] ?? '';
-    $descripcion = $_POST['descripcion'] ?? '';
-    $fecha = $_POST['fecha'] ?? '';
-
-    if (isset($_FILES['archivo']) && $_FILES['archivo']['error'] === UPLOAD_ERR_OK) {
-        $archivoTmpPath = $_FILES['archivo']['tmp_name'];
-        $archivoNombre = $_FILES['archivo']['name'];
-        $archivoDestino = "uploads/" . $archivoNombre;
-        
-        if (move_uploaded_file($archivoTmpPath, $archivoDestino)) {
-            $exito = $database->insertarCotizacion($cliente, $descripcion, $archivoDestino, $fecha);
-            if ($exito) {
-                $_SESSION['mensaje'] = "Cotización guardada y archivo subido correctamente.";
-                header('Location: menuinfrusch.php');
-                exit;
-            } else {
-                $mensaje = "Error al guardar la cotización.";
-            }
-        } else {
-            $mensaje = "Error al subir el archivo.";
-        }
-    } else {
-        $mensaje = "Error en la carga del archivo.";
-    }
-}
-
-$cotizaciones = $database->databaseservi();
+$cotizaciones = $database->obtenerServiciosPendientes();
 
 include("src/includes/header.php");
 ?>
@@ -46,36 +17,6 @@ include("src/includes/header.php");
 
 <div class="container">
     <h2>Cotizaciones</h2>
-
-    <?php if ($mensaje): ?>
-        <p class="error"><?php echo $mensaje; ?></p>
-    <?php endif; ?>
-
-    <form method="post" action="cotizaciones.php" enctype="multipart/form-data">
-        <div class="form-group">
-            <label for="cliente">Cliente:</label>
-            <input type="text" id="cliente" name="cliente" required>
-        </div>
-        
-        <div class="form-group">
-            <label for="descripcion">Descripción:</label>
-            <textarea id="descripcion" name="descripcion" required></textarea>
-        </div>
-
-        <div class="form-group">
-            <label for="fecha">Fecha de cotización:</label>
-            <input type="date" id="fecha" name="fecha" required>
-        </div>
-        
-        <div class="form-group">
-            <label for="archivo">Archivo de cotización (PDF):</label>
-            <input type="file" id="archivo" name="archivo" required>
-        </div>
-        
-        <div class="form-group">
-            <input type="submit" value="Guardar Cotización">
-        </div>
-    </form>
     
     <table>
         <thead>

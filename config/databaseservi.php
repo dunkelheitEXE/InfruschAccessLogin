@@ -17,7 +17,6 @@ class DatabaseServi {
         }
     }
 
-    // Función para insertar una nueva cotización en la base de datos
     public function insertarCotizacion($cliente, $descripcion, $archivo, $fecha) {
         $sql = "INSERT INTO nombre_tabla_cotizaciones (cliente, descripcion, archivo, fecha) VALUES (?, ?, ?, ?)";
         $stmt = $this->connection->prepare($sql);
@@ -25,12 +24,13 @@ class DatabaseServi {
     }
     
 
-    // Función para obtener los servicios pendientes
     public function obtenerServiciosPendientes() {
-        $sql = "SELECT * FROM infrusch_Servicios WHERE estado_servicio = 'pendiente'";
+        $sql = "SELECT * FROM infrusch_servicios WHERE estado_servicio = 'pendiente'";
         $stmt = $this->connection->query($sql);
         return $stmt ? $stmt->fetchAll(PDO::FETCH_ASSOC) : [];
     }
+    
+    
+    
 }
-
 ?>
