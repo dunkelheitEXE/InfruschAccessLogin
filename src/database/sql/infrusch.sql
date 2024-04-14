@@ -8,29 +8,20 @@ create table infrusch_access (
     primary key(id)
 );
 
-create table infrusch_alta_servicios(
-	servicio_id int not null auto_increment,
-    foreign key(cliente_id) references infrusch_clients(cliente_id),
-    primary key(servicio_id)
+CREATE TABLE infrusch_clients(
+	id_cliente INT NOT NULL AUTO_INCREMENT,
+    cliente_constancia VARCHAR(255) NOT NULL,
+    cliente_nombre VARCHAR(255) NOT NULL,
+    cliente_direccion VARCHAR(255) NOT NULL,
+    cliente_telefono VARCHAR(255) NOT NULL,
+    cliente_password VARCHAR(255) NOT NULL,
+    PRIMARY KEY(id_cliente)
 );
 
-create table infrusch_clients (
-	cliente_id int not null auto_increment,
-    cliente_constancia varchar(300),
-    cliente_nombre varchar(300) not null,
-    cliente_direccion varchar(350) not null,
-    cliente_telefono varchar(10),
-    cliente_email varchar(255),
-    primary key(cliente_id)
-);
-ALTER TABLE infrusch_clients ADD cliente_password varchar(300) not null;
-
-
+ALTER TABLE infrusch_clients ADD cliente_email VARCHAR(255) NOT NULL AFTER cliente_telefono;
+-- ALTER TABLE infrusch_clients CHANGE id_cliente cliente_id VARCHAR(255) NOT NULL;
+ALTER TABLE infrusch_clients MODIFY cliente_id INT NOT NULL AUTO_INCREMENT;
 Select * from infrusch_access;
-select * from infrusch_clients;
-
--- delete from infrusch_access where id = 7;
-delete from infrusch_clients where cliente_id=3;
--- delete from registro_infrusch_clientes where id=1;
+SELECT * FROM infrusch_clients;
 
 
