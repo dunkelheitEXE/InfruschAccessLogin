@@ -18,9 +18,9 @@ CREATE TABLE infrusch_clients(
     PRIMARY KEY(id_cliente)
 );
 
-ALTER TABLE infrusch_clients ADD cliente_email VARCHAR(255) NOT NULL AFTER cliente_telefono;
+-- ALTER TABLE infrusch_clients ADD cliente_email VARCHAR(255) NOT NULL AFTER cliente_telefono;
 -- ALTER TABLE infrusch_clients CHANGE id_cliente cliente_id VARCHAR(255) NOT NULL;
-ALTER TABLE infrusch_clients MODIFY cliente_id INT NOT NULL AUTO_INCREMENT;
+-- ALTER TABLE infrusch_clients MODIFY cliente_id INT NOT NULL AUTO_INCREMENT;
 Select * from infrusch_access;
 SELECT * FROM infrusch_clients;
 
