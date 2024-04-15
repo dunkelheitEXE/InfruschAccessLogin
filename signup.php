@@ -1,23 +1,10 @@
-<?php include("src/includes/header.php");?>
 <?php
 require "config/app.php";
+$message="";
 
-/**
- * 
- * PENDIENTE A ACABAR
- * 
-*/
+include("src/includes/header.php");
+require "controllers/SignupProceso.php";
+include("src/includes/components/ComRegistroAdmins.php");
+include("src/includes/footer.php");
 
-
-if(isset($_POST['submit'])) {
-    $pass = password_hash($_POST['token'], PASSWORD_BCRYPT);
-    $message = $connection->insertUser($_POST['username'], $pass);
-    echo $message;
-}
 ?>
-<form action="" class="form" method="post">
-    <input type="text" name="username" class="form-control" placeholder="Usuario">
-    <input type="text" name="token" class="form-control" placeholder="Contraseña">
-    <input type="submit" name="submit" value="Submit" class="form-btn">
-</form>
-<?php include("src/includes/footer.php");?>
