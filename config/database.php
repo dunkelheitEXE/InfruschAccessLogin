@@ -65,10 +65,19 @@ class Database {
     }
 
     public function verificarExistencia($user, $table) {
+        // VARIABLE DE ESTADO
+        // .. TRUE si el usuario no existe y se puede registrar
+        // .. FALSE si el usuario ya esta registrado
         $state = true;
+
+        // CONSULTA SQL
         $sql = "SELECT * FROM $table";
         $query=$this->connection->prepare($sql);
+
+        //EJECUTAMOS CONSULTA
         $query->execute();
+
+        // USAR BUCLE WHILE MIENTRAS SE PUEDA RECORRER EL ARREGLO DE DATOS CAPTURADOS DESDE LA BASE DE DATOS
         while ($verificador = $query->fetch()){
             if($user == $verificador['username']){
                 $state=false;
@@ -78,6 +87,7 @@ class Database {
             }
         }
 
+        // RETORNAR EL ESTADO
         return $state;
     }
 
@@ -135,20 +145,34 @@ class Database {
 
     public function editCliente($nombre, $direccion, $telefono, $email, $id) {
         try{
+            // Creamos la consulta para actualizar los datos basicos del cliente
             $sql = "UPDATE infrusch_clients SET cliente_nombre=:nombre, cliente_direccion=:direccion, cliente_telefono = :telefono, cliente_email = :email WHERE cliente_id=:id";
+
+            // PREPARAMOS LA SENTENCIA
             $query = $this->connection->prepare($sql);
-            $query->bindParam(':nombre', $nombre);
-            $query->bindParam(':direccion', $direccion);
-            $query->bindParam(':telefono', $telefono);
-            $query->bindParam(':email', $email);
-            $query->bindParam(':id', $id);
-            if($query->execute()) {
+
+            // SI EJECUTA DE MANERA ADECUADA, DEVOLVERA UN MENSAJE DE CONFIRMACION
+            if($query->execute([':nombre' => $nombre, ':direccion' => $direccion, ':telefono' => $telefono, ':email' => $email, 'id' => $id])) {
                 return "<div class='tg tg-success'>Cliente registrado correctamente</div>";
             } else {
                 return "<div class='tg tg-danger'>Error</div>";
             }
         }catch(\Throwable $e) {
             return $e;
+        }
+    }
+
+    public function editarConstancia($id, $constancia) {
+        try{
+            $query = $this->connection->prepare("UPDATE infrusch_clients SET cliente_constancia = :constancia WHERE cliente_id = :id");
+            if($query->execute([':constancia' => $constancia, ':id' => $id])) {
+                return "Exito";
+            } else {
+                return "<div class='tg tg-danger'>Error</div>";
+            }
+        } catch (\Throwable $th)
+        {
+            return $th->getMessage();
         }
     }
 
