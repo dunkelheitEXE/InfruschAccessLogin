@@ -190,6 +190,14 @@ class Database {
             return $e;
         }
     }
+
+    public function editarPassword($password) {
+        try {
+            //code...
+        } catch (\Throwable $th) {
+            //throw $th;
+        }
+    }
 }
 
 ?>

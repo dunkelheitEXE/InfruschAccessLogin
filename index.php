@@ -6,5 +6,6 @@ if(isset($_SESSION['user-id'])) {
     header('Location: home.php');
 }
 
-include("src/includes/header.php");?>
-<?php include("src/includes/footer.php");?>
+include("src/includes/header.php");
+include("src/includes/footer.php");
+?>

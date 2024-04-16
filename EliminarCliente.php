@@ -5,4 +5,6 @@ if(!isset($_SESSION['user-id'])) {
     header('Location: index.php');
 }
 require "controllers/EliminarClienteController.php";
+$eliminarCliente = new EliminarClienteController();
+$eliminarCliente->eliminarCliente($_GET['clienteid']);
 ?>

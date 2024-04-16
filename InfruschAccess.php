@@ -2,21 +2,29 @@
 // -- LLAMAR A LA CONECCION E INICIO DE SESION
 // CALLING DB CONNECTION AND SESSION START
 session_start();
-require "config/app.php";
-$message="";
 if(isset($_SESSION['user-id'])) {
     header('Location: home.php');
-} else {
-    require "controllers/LoginSuccessfull.php";
 }
 
-// # COMPONENTS
+
+require "controllers/LoginAdminController.php";
+$loginAdmin = new LoginAdminController();
+
 include("src/includes/header.php");
-if($message != "") {
-    echo "<div class='tg tg-danger'>" . $message . "</div>";
-}
-include("src/includes/ComFormInfruschAccess.php");
+if(isset($_POST['submit'])) {
+    $user = isset($_POST['usuario']) ? $_POST['usuario'] : '';
+    $password = isset($_POST['password']) ? $_POST['password'] : ''; 
+    $id = $loginAdmin->loginAdmin('infrusch_access', $user, $password);
 
-//FOOTER
+    if($id == "ERROR") {
+        echo '
+            <div class="tg tg-danger"> Error, compruebe sus credenciales </div>
+        ';
+    } else {
+        $_SESSION['user-id'] = $id;
+        header('Location: home.php');
+    }
+}
+include("src/components/ComFormInfruschAccess.php");
 include("src/includes/footer.php");
 ?>
