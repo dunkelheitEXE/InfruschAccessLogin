@@ -142,5 +142,23 @@ class ClientesQuery {
             return "ERROR";
         }
     }
+
+    public function SelectNombresClientes() {
+        try {
+            $sql = "SELECT cliente_nombre FROM infrusch_clients";
+            $query = $this->connection->prepare($sql);
+            if ($query->execute()) {
+                $results = $query->fetchAll(PDO::FETCH_ASSOC);
+                return $results;
+            } else {
+                echo "ERROR";
+                return "ERROR";
+            }
+        } catch (\Throwable $th) {
+            //throw $th;
+            echo "ERROR";
+            return "ERROR";
+        }
+    }
 }
 ?>

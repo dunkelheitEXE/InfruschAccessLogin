@@ -6,5 +6,11 @@ class DatosClienteController {
         $stmt = $connection->BuscarClientes($search, $searchType);
         return $stmt;
     }
+
+    public function selectNombresClientes() {
+        $connection = new ClientesQuery();
+        $stmt = $connection->SelectNombresClientes();
+        return $stmt;
+    }
 }
 ?>
